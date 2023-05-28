@@ -90,16 +90,6 @@ $config['plugins'] = array(
 ...
 ```
 
-Open `data/web/rc/plugins/password/password.php`, search for `case 'ssha':` and add above:
-
-```php
-        case 'ssha256':
-            $salt = rcube_utils::random_bytes(8);
-            $crypted = base64_encode( hash('sha256', $password . $salt, TRUE ) . $salt );
-            $prefix  = '{SSHA256}';
-            break;
-```
-
 Open `data/web/rc/plugins/password/config.inc.php` and change the following parameters (or add them at the bottom of that file):
 
 ```php
